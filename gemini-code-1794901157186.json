@@ -1,0 +1,32 @@
+{
+  "step_1_validation": {
+    "status": "CHỜ_XỬ_LÝ",
+    "provided_order_id": "${provided_order_id}",
+    "error_code": null,
+    "validation_details": {
+      "is_order_id_valid": false,
+      "is_complaint_content_complete": false,
+      "message": "Kiểm tra định dạng và sự tồn tại của mã đơn hàng trong hệ thống. Nếu mã đơn hàng trống, không tồn tại hoặc sai định dạng, gán ngay error_code là 'THIẾU_HOẶC_SAI_MÃ_ĐƠN' và dừng toàn bộ tiến trình xử lý tự động để chuyển sang nhân sự xử lý thủ công."
+    }
+  },
+  "step_2_reasoning": {
+    "chain_of_thought": [
+      "1. Xác thực nguồn dữ liệu đầu vào: Đối chiếu thông tin khiếu nại (giao sai, giao thiếu, sản phẩm lỗi) với lịch sử đơn hàng thực tế.",
+      "2. Kiểm tra đứt gãy dữ liệu: Nếu dữ liệu khách hàng cung cấp không đồng nhất hoặc thiếu sót nghiêm trọng, tuyệt đối không suy đoán hay bịa đặt thông tin.",
+      "3. Đối chiếu chính sách đổi trả: So sánh vấn đề của khách hàng với quy định đổi trả hiện hành của cửa hàng để xác định quyền lợi và điều kiện giải quyết hợp lệ."
+    ],
+    "policy_matching": {
+      "issue_type": "${issue_type}",
+      "applicable_policy": "Chính sách đổi trả tiêu chuẩn áp dụng cho sản phẩm lỗi, giao thiếu hoặc giao sai.",
+      "compliance_status": "Đang đánh giá"
+    }
+  },
+  "step_3_action_and_response": {
+    "internal_operational_action": "Đề xuất các bước xử lý nội bộ (ví dụ: tạo phiếu đổi trả, liên hệ kho vận kiểm tra camera đóng gói, hoặc yêu cầu khách cung cấp thêm hình ảnh minh chứng nếu cần thiết nhưng không vi phạm ràng buộc dữ liệu thiếu sót).",
+    "customer_response_template": {
+      "greeting": "Kính gửi Quý khách,",
+      "body": "Chúng tôi đã tiếp nhận thông tin khiếu nại của Quý khách về đơn hàng. Đội ngũ chăm sóc khách hàng đang tiến hành xác thực dữ liệu và sẽ phản hồi phương án giải quyết tối ưu trong thời gian sớm nhất.",
+      "closing": "Trân trọng cảm ơn Quý khách đã kiên nhẫn và thông cảm."
+    }
+  }
+}
